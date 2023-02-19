@@ -10,35 +10,35 @@ import Foundation
 import Alamofire
 
 enum ALphaNetworking {
-    case getToken(username: String, password: String, grant_type: String, scope: String, client_id: String, client_secret: String)
+    case getImages(pageNumber: Int)
 }
 
 extension ALphaNetworking: TargetType {
     var baseURL: String {
         switch self {
         default:
-            return "https://development.iam.api.alpha.creditfins.com"
+            return "https://picsum.photos/v2/list?page=1&limit=10"
         }
     }
     
     var path: String {
         switch self {
-        case .getToken:
-            return "/oauth/token"
+        case .getImages(pageNumber: let pageNumber):
+            return "/v2/list?page=\(pageNumber)&limit=10"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .getToken:
-            return .post
+        case .getImages:
+            return .get
         }
     }
     
     var task: Task {
         switch self {
-        case .getToken(let username, let password, let grant_type, let scope, let client_id, let client_secret):
-            return .requestParameters(parameters: ["username": username, "password": password, "grant_type": grant_type, "scope": scope, "client_id": client_id, "client_secret": client_secret], encoding: URLEncoding.httpBody)
+        case .getImages:
+            return .requestPlain
         }
     }
     

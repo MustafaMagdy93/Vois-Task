@@ -11,7 +11,7 @@ import SwiftUI
 struct VoiseTaskApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GetImagesView()
         }
     }
 }
