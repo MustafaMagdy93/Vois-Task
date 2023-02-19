@@ -7,19 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5C76A4129A2B8B5009FDCCC /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C76A4029A2B8B5009FDCCC /* ErrorHandling.swift */; };
 		E5C7DB0429A2A43E009FDCCC /* VoiseTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C7DB0329A2A43E009FDCCC /* VoiseTaskApp.swift */; };
 		E5C7DB0629A2A43E009FDCCC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C7DB0529A2A43E009FDCCC /* ContentView.swift */; };
 		E5C7DB0829A2A43F009FDCCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C7DB0729A2A43F009FDCCC /* Assets.xcassets */; };
 		E5C7DB0C29A2A43F009FDCCC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C7DB0B29A2A43F009FDCCC /* Preview Assets.xcassets */; };
+		E5C7DB1729A2B6E6009FDCCC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E5C7DB1629A2B6E6009FDCCC /* Alamofire */; };
+		E5C7DB2129A2B7A4009FDCCC /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C7DB1C29A2B7A4009FDCCC /* TargetType.swift */; };
+		E5C7DB2229A2B7A4009FDCCC /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C7DB1D29A2B7A4009FDCCC /* BaseAPI.swift */; };
+		E5C7DB2329A2B7A4009FDCCC /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C7DB1F29A2B7A4009FDCCC /* Api.swift */; };
+		E5C7DB2429A2B7A4009FDCCC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C7DB2029A2B7A4009FDCCC /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E5C76A4029A2B8B5009FDCCC /* ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		E5C7DB0029A2A43E009FDCCC /* VoiseTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiseTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C7DB0329A2A43E009FDCCC /* VoiseTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiseTaskApp.swift; sourceTree = "<group>"; };
 		E5C7DB0529A2A43E009FDCCC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E5C7DB0729A2A43F009FDCCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5C7DB0929A2A43F009FDCCC /* VoiseTask.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoiseTask.entitlements; sourceTree = "<group>"; };
 		E5C7DB0B29A2A43F009FDCCC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E5C7DB1C29A2B7A4009FDCCC /* TargetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		E5C7DB1D29A2B7A4009FDCCC /* BaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		E5C7DB1F29A2B7A4009FDCCC /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		E5C7DB2029A2B7A4009FDCCC /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5C7DB1729A2B6E6009FDCCC /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +64,9 @@
 		E5C7DB0229A2A43E009FDCCC /* VoiseTask */ = {
 			isa = PBXGroup;
 			children = (
+				E5C7DB1829A2B700009FDCCC /* Helpers */,
+				E5C7DB1329A2B454009FDCCC /* Models */,
+				E5C7DB1229A2B44A009FDCCC /* Views */,
 				E5C7DB0329A2A43E009FDCCC /* VoiseTaskApp.swift */,
 				E5C7DB0529A2A43E009FDCCC /* ContentView.swift */,
 				E5C7DB0729A2A43F009FDCCC /* Assets.xcassets */,
@@ -67,6 +82,56 @@
 				E5C7DB0B29A2A43F009FDCCC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E5C7DB1229A2B44A009FDCCC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E5C7DB1329A2B454009FDCCC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E5C7DB1829A2B700009FDCCC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E5C7DB1929A2B73B009FDCCC /* NetworkLayer */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E5C7DB1929A2B73B009FDCCC /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				E5C76A4029A2B8B5009FDCCC /* ErrorHandling.swift */,
+				E5C7DB1B29A2B7A4009FDCCC /* Base */,
+				E5C7DB1E29A2B7A4009FDCCC /* Networking */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		E5C7DB1B29A2B7A4009FDCCC /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E5C7DB1C29A2B7A4009FDCCC /* TargetType.swift */,
+				E5C7DB1D29A2B7A4009FDCCC /* BaseAPI.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		E5C7DB1E29A2B7A4009FDCCC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E5C7DB1F29A2B7A4009FDCCC /* Api.swift */,
+				E5C7DB2029A2B7A4009FDCCC /* Networking.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +150,9 @@
 			dependencies = (
 			);
 			name = VoiseTask;
+			packageProductDependencies = (
+				E5C7DB1629A2B6E6009FDCCC /* Alamofire */,
+			);
 			productName = VoiseTask;
 			productReference = E5C7DB0029A2A43E009FDCCC /* VoiseTask.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +181,9 @@
 				Base,
 			);
 			mainGroup = E5C7DAF729A2A43E009FDCCC;
+			packageReferences = (
+				E5C7DB1529A2B6E6009FDCCC /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = E5C7DB0129A2A43E009FDCCC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,6 +210,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5C7DB2329A2B7A4009FDCCC /* Api.swift in Sources */,
+				E5C7DB2129A2B7A4009FDCCC /* TargetType.swift in Sources */,
+				E5C76A4129A2B8B5009FDCCC /* ErrorHandling.swift in Sources */,
+				E5C7DB2429A2B7A4009FDCCC /* Networking.swift in Sources */,
+				E5C7DB2229A2B7A4009FDCCC /* BaseAPI.swift in Sources */,
 				E5C7DB0629A2A43E009FDCCC /* ContentView.swift in Sources */,
 				E5C7DB0429A2A43E009FDCCC /* VoiseTaskApp.swift in Sources */,
 			);
@@ -354,6 +430,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E5C7DB1529A2B6E6009FDCCC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E5C7DB1629A2B6E6009FDCCC /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5C7DB1529A2B6E6009FDCCC /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E5C7DAF829A2A43E009FDCCC /* Project object */;
 }
