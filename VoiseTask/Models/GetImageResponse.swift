@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetImageResponse {
+struct GetImageResponse: Codable {
     let id: String?
     let author: String?
     let width, height: Int?
