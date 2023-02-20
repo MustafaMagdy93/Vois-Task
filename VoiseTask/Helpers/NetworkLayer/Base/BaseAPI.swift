@@ -11,7 +11,7 @@ import Alamofire
 
 class BaseAPI<T: TargetType> {
     
-    func fetchData<M: Decodable>(target: T, responseClass: M.Type, completion:@escaping (Result<M?, GFError>) -> Void) {
+    func fetchData<M: Decodable>(target: T, responseClass: M.Type, completion:@escaping (Result<M?, APError>) -> Void) {
         let method = Alamofire.HTTPMethod(rawValue: target.method.rawValue)
         let headers = Alamofire.HTTPHeaders(target.headers ?? [:])
         let params = buildParams(task: target.task)
@@ -27,7 +27,7 @@ class BaseAPI<T: TargetType> {
                 guard let jsonResponse = try? response.result.get() else {
                     // ADD Custom Error
 //                    let error = NSError(domain: target.baseURL, code: 0, userInfo: [NSLocalizedDescriptionKey: ErrorMessage.genericError])
-                    completion(.failure(.invalidUsername))
+                    completion(.failure(.invalidURL))
                     return
                 }
                 guard let theJSONData = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) else {
@@ -53,7 +53,7 @@ class BaseAPI<T: TargetType> {
         }
     }
     
-    func postData<M: Decodable>(target: T, responseClass: M.Type, completion:@escaping (Result<M?, GFError>) -> Void) {
+    func postData<M: Decodable>(target: T, responseClass: M.Type, completion:@escaping (Result<M?, APError>) -> Void) {
         let method = Alamofire.HTTPMethod(rawValue: target.method.rawValue)
         let headers = Alamofire.HTTPHeaders(target.headers ?? [:])
         let params = buildParams(task: target.task)
@@ -71,7 +71,7 @@ class BaseAPI<T: TargetType> {
                 guard let jsonResponse = try? response.result.get() else {
                     // ADD Custom Error
 //                    let error = NSError(domain: target.baseURL, code: 0, userInfo: [NSLocalizedDescriptionKey: ErrorMessage.genericError])
-                    completion(.failure(.invalidUsername))
+                    completion(.failure(.invalidURL))
                     return
                 }
                 guard let theJSONData = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) else {
@@ -97,7 +97,7 @@ class BaseAPI<T: TargetType> {
         }
     }
 
-    func putData<M: Decodable>(target: T, responseClass: M.Type, completion:@escaping (Result<M?, GFError>) -> Void) {
+    func putData<M: Decodable>(target: T, responseClass: M.Type, completion:@escaping (Result<M?, APError>) -> Void) {
         let method = Alamofire.HTTPMethod(rawValue: target.method.rawValue)
         let headers = Alamofire.HTTPHeaders(target.headers ?? [:])
         let params = buildParams(task: target.task)
@@ -113,7 +113,7 @@ class BaseAPI<T: TargetType> {
                 guard let jsonResponse = try? response.result.get() else {
                     // ADD Custom Error
 //                    let error = NSError(domain: target.baseURL, code: 0, userInfo: [NSLocalizedDescriptionKey: ErrorMessage.genericError])
-                    completion(.failure(.invalidUsername))
+                    completion(.failure(.invalidURL))
                     return
                 }
                 guard let theJSONData = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) else {
@@ -139,7 +139,7 @@ class BaseAPI<T: TargetType> {
         }
     }
     
-    func deleteData<M: Decodable>(target: T, responseClass: M.Type, completion:@escaping (Result<M?, GFError>) -> Void) {
+    func deleteData<M: Decodable>(target: T, responseClass: M.Type, completion:@escaping (Result<M?, APError>) -> Void) {
         let method = Alamofire.HTTPMethod(rawValue: target.method.rawValue)
         let headers = Alamofire.HTTPHeaders(target.headers ?? [:])
         let params = buildParams(task: target.task)
@@ -155,7 +155,7 @@ class BaseAPI<T: TargetType> {
                 guard let jsonResponse = try? response.result.get() else {
                     // ADD Custom Error
 //                    let error = NSError(domain: target.baseURL, code: 0, userInfo: [NSLocalizedDescriptionKey: ErrorMessage.genericError])
-                    completion(.failure(.invalidUsername))
+                    completion(.failure(.invalidURL))
                     return
                 }
                 guard let theJSONData = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) else {

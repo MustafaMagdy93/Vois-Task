@@ -7,15 +7,37 @@
 
 import SwiftUI
 
+
 struct GetImagesView: View {
+    
+    @StateObject var viewModel = GetImageViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            NavigationView {
+                List(viewModel.images, id: \.id) { image in
+                    ImageCell(image: image)
+                    
+//                    if viewModel.images.count == 5 {
+//                            googleAddCell
+//                    }
+                }
+                .navigationTitle("Images")
+            }
+            .onAppear { viewModel.getImages(pageNumber: 2) }
+            
+            if viewModel.isLoading { LoadingView() }
         }
-        .padding()
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
+        }
+    }
+}
+
+extension GetImagesView {
+    var googleAddCell: some View {
+        Text("Add google ad here")
+            .padding(.all)
     }
 }
 

@@ -17,7 +17,7 @@ extension ALphaNetworking: TargetType {
     var baseURL: String {
         switch self {
         default:
-            return "https://picsum.photos/v2/list?page=1&limit=10"
+            return "https://picsum.photos"
         }
     }
     

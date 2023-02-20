@@ -1,9 +1,11 @@
 
 import Foundation
+import UIKit
 
 protocol ApiProtocol {
     
-    func getImages(pageNumber: Int, completion: @escaping (Result<[GetImageResponse]?, GFError>) -> Void)
+    func getImagesList(pageNumber: Int, completion: @escaping (Result<[GetImageResponse]?, APError>) -> Void)
+    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void)
     
 }
 
@@ -11,10 +13,38 @@ protocol ApiProtocol {
 class Api: BaseAPI<ALphaNetworking>, ApiProtocol {
     
     static let shared: ApiProtocol = Api()
+    private let cache = NSCache<NSString, UIImage>()
     
-    func getImages(pageNumber: Int, completion: @escaping (Result<[GetImageResponse]?, GFError>) -> Void) {
+    func getImagesList(pageNumber: Int, completion: @escaping (Result<[GetImageResponse]?, APError>) -> Void) {
         self.fetchData(target: .getImages(pageNumber: pageNumber), responseClass: [GetImageResponse].self) { result in
             completion(result)
         }
+    }
+    
+    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
+        
+        let cacheKey = NSString(string: urlString)
+        
+        if let image = cache.object(forKey: cacheKey) {
+            completed(image)
+            return
+        }
+        
+        guard let url = URL(string: urlString) else {
+            completed(nil)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, let image = UIImage(data: data) else {
+                completed(nil)
+                return
+            }
+            
+            self.cache.setObject(image, forKey: cacheKey)
+            completed(image)
+        }
+        
+        task.resume()
     }
 }
