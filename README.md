@@ -11,10 +11,11 @@
   - Alamofire ( network requests )
   - Singleton
   - Kingfisher
+  - SPM
   
  # Setup
   - clone the project.
-  - install the Pods.
+  - index SPM packages.
   - clean and build.
   - run.
   
