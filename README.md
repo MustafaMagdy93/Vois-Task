@@ -15,7 +15,7 @@
   
  # Setup
   - clone the project.
-  - index SPM packages.
+  - wait for indexing SPM packages.
   - clean and build.
   - run.
   
