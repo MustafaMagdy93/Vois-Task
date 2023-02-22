@@ -6,15 +6,35 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ImageDetailsView: View {
+    var imageURLString: String?
+    
+    @State var averageColor: Color? = .white
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct ImageDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ImageDetailsView()
+        ZStack {
+            averageColor.ignoresSafeArea()
+            
+            KFImage(imageURLString?.toURL)
+                .placeholder {
+                    Image("imagePlaceholder")
+                        .resizable()
+                        .frame(width: 100, height: 100, alignment: .center)
+                        .opacity(0.5)
+                        .overlay(
+                            ProgressView().foregroundColor(.black)
+                        )
+                }
+                .resizable()
+                .onSuccess({ result in
+                    averageColor = result.image.averageColor?.toSUColor
+                })
+                .scaledToFit()
+                .cornerRadius(10)
+                .padding(10)
+                
+        }
     }
 }

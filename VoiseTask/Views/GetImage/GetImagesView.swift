@@ -15,16 +15,35 @@ struct GetImagesView: View {
     var body: some View {
         ZStack {
             NavigationView {
-                List(viewModel.images, id: \.id) { image in
-                    ImageCell(image: image)
+                List {
+                    ForEach(viewModel.images, id: \.id){ image in
+                        if image.isGoogleAds ?? false {
+                            googleAddCell
+                        } else {
+                            ImageCell(image: image)
+                            .listRowSeparator(.hidden)
+                        }
+                       
+                    }
                     
-//                    if viewModel.images.count == 5 {
-//                            googleAddCell
-//                    }
+                    if viewModel.shouldPaginate {
+                            Text("fetching Data")
+                            .onAppear{
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    viewModel.getImages(.next)
+                                }
+                            }
+                            .listRowSeparator(.hidden)
+                    }
                 }
+                .listStyle(.plain)
                 .navigationTitle("Images")
+                .refreshable {
+                    viewModel.getImages(.first)
+                }
+                
             }
-            .onAppear { viewModel.getImages(pageNumber: 2) }
+            .onAppear { viewModel.getImages(.first) }
             
             if viewModel.isLoading { LoadingView() }
         }
@@ -36,8 +55,21 @@ struct GetImagesView: View {
 
 extension GetImagesView {
     var googleAddCell: some View {
-        Text("Add google ad here")
-            .padding(.all)
+        Image("ads")
+            .resizable()
+            .frame(height: 80)
+            .overlay(
+                VStack{
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        Text("Powered by Google Ads")
+                            .font(.caption)
+                            .foregroundColor(.white)
+                            .padding(5)
+                    }
+                }
+            )
     }
 }
 

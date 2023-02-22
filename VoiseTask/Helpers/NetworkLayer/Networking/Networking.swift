@@ -9,11 +9,11 @@
 import Foundation
 import Alamofire
 
-enum ALphaNetworking {
+enum Networking {
     case getImages(pageNumber: Int)
 }
 
-extension ALphaNetworking: TargetType {
+extension Networking: TargetType {
     var baseURL: String {
         switch self {
         default:

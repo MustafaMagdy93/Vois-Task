@@ -6,24 +6,45 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ImageCell: View {
     
     let image: GetImageResponse?
     
-    
     var body: some View {
         HStack(spacing: 15) {
-            FetchRemoteImage(urlString: image?.downloadURL ?? "")
-                .aspectRatio(contentMode: .fit)
-//                .frame(width: 150, height: 150)
-                .cornerRadius(8)
+            KFImage(image?.downloadURL?.toURL)
+                .placeholder {
+                    Image("imagePlaceholder")
+                        .resizable()
+                        .frame(width: 100, height: 100, alignment: .center)
+                        .opacity(0.5)
+                        .overlay(
+                            ProgressView().foregroundColor(.black)
+                        )
+                }
+                .resizable()
+                .frame(width: 100, height: 100, alignment: .center)
+                .cornerRadius(10)
+                .shadow(color: .gray, radius: 8)
             
             Text(image?.author ?? "N/A")
                     .font(.title2)
                     .fontWeight(.medium)
+            Spacer()
         }
         .padding()
+        .background(
+            Color.white
+                .cornerRadius(10)
+                .shadow(color: .gray, radius: 8)
+        )
+        .background(
+            NavigationLink("") {
+                ImageDetailsView(imageURLString: image?.downloadURL)
+            }
+        )
     }
 }
 

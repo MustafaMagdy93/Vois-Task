@@ -8,10 +8,11 @@
 import Foundation
 
 struct GetImageResponse: Codable {
-    let id: String?
-    let author: String?
-    let width, height: Int?
-    let url, downloadURL: String?
+    var id: String?
+    var author: String?
+    var width, height: Int?
+    var url, downloadURL: String?
+    var isGoogleAds: Bool?
     
     enum CodingKeys : String, CodingKey {
             case downloadURL = "download_url", id, author, width, height, url
